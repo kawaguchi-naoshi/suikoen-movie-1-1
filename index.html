@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寸又峡温泉 翠紅苑｜①ヒーロー背景ループ 制作仕様書</title>
+<style>
+  :root{
+    --ink:#1C2B2B; --emerald:#2E7D6B; --emerald-deep:#1F5C4E;
+    --cream:#F6F1E7; --paper:#FBF8F1; --sumi:#4A4744; --crimson:#7A2E2E; --line:#D9D2C2;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;color:var(--sumi);background:var(--paper);line-height:1.8;}
+  .wrap{max-width:920px;margin:0 auto;padding:40px 24px 80px;}
+  .edit-hint{background:var(--ink);color:#fff;padding:10px 16px;font-size:12.5px;line-height:1.7;}
+  .edit-hint strong{color:#9fd6c5;}
+  header.doc-head{border-bottom:2px solid var(--emerald);padding-bottom:20px;margin-bottom:28px;}
+  header.doc-head .eyebrow{font-size:12px;letter-spacing:0.15em;color:var(--emerald-deep);margin-bottom:6px;}
+  header.doc-head h1{font-size:23px;color:var(--ink);margin:0 0 8px;letter-spacing:0.03em;}
+  header.doc-head .meta{font-size:13px;color:#8a847a;}
+  h2.section-title{font-size:17px;color:var(--ink);border-left:5px solid var(--emerald);padding-left:12px;margin:40px 0 16px;}
+  .summary-box{background:#fff;border:1px solid var(--line);border-radius:6px;padding:18px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .summary-box .item .label{font-size:11.5px;color:var(--emerald-deep);letter-spacing:0.05em;margin-bottom:4px;}
+  .summary-box .item .val{font-size:14px;color:var(--ink);}
+  p.lead{font-size:14px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px 20px;}
+  table.shotlist{width:100%;border-collapse:collapse;background:#fff;font-size:13.5px;}
+  table.shotlist th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 12px;font-size:12px;letter-spacing:0.03em;}
+  table.shotlist td{border-bottom:1px solid var(--line);padding:11px 12px;vertical-align:top;}
+  table.shotlist tr:last-child td{border-bottom:none;}
+  table.shotlist td.time{white-space:nowrap;color:var(--emerald-deep);font-weight:700;width:85px;}
+  table.shotlist td.scene{width:150px;color:var(--ink);font-weight:700;}
+  table.shotlist tr.emphasis td{background:#F0F7F4;}
+  table.shotlist tr.static-row td{background:#FBEDE9;}
+  .tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;margin-left:5px;vertical-align:middle;background:var(--emerald);color:#fff;}
+  .tag.point{background:var(--crimson);}
+  .loop-note{text-align:center;margin:16px 0 0;font-size:13px;color:var(--emerald-deep);font-weight:700;}
+  ul.notes{background:#fff;border:1px solid var(--line);border-radius:6px;padding:18px 22px 18px 38px;font-size:13.5px;margin:0;}
+  ul.notes li{margin-bottom:9px;}
+  ul.notes li:last-child{margin-bottom:0;}
+  .delivery-box{background:var(--cream);border:1px dashed #c9c2b3;border-radius:6px;padding:18px 22px;}
+  .delivery-box dt{font-size:11.5px;color:var(--emerald-deep);margin-top:12px;}
+  .delivery-box dt:first-child{margin-top:0;}
+  .delivery-box dd{margin:2px 0 0;font-size:13.5px;color:var(--sumi);}
+  .size-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px;}
+  .size-card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:14px 16px;}
+  .size-card .device{font-size:11px;color:var(--emerald-deep);letter-spacing:0.05em;margin-bottom:4px;}
+  .size-card .px{font-size:16px;color:var(--ink);font-weight:700;}
+  .size-card .ratio{font-size:12px;color:#8a847a;}
+  footer.doc-footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:#8a948f;text-align:center;}
+  [contenteditable="true"]{outline:none;border-radius:3px;transition:background 0.15s;}
+  [contenteditable="true"]:hover{background:rgba(46,125,107,0.08);cursor:text;}
+  [contenteditable="true"]:focus{background:rgba(46,125,107,0.12);}
+  @media print{.edit-hint{display:none;} [contenteditable="true"]:hover, [contenteditable="true"]:focus{background:none;}}
+  @media (max-width:640px){.summary-box{grid-template-columns:1fr;} .size-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="edit-hint">
+  文章はクリックして直接編集できます(ブラウザ上の一時的な編集用)。<br>
+  編集後は<strong>ブラウザの「印刷 → PDFとして保存」</strong>、または「名前を付けて保存」でファイル化してください。
+</div>
+
+<div class="wrap">
+
+  <header class="doc-head">
+    <div class="eyebrow">VIDEO PRODUCTION SPEC ①／②</div>
+    <h1 contenteditable="true">①ヒーロー背景ループ　制作仕様書</h1>
+    <div class="meta" contenteditable="true">寸又峡温泉 翠紅苑 ウェブサイト トップページ用｜常時再生の背景動画（②ストーリー動画は別紙）</div>
+  </header>
+
+  <h2 class="section-title">動画の概要</h2>
+  <div class="summary-box">
+    <div class="item"><div class="label">尺（長さ）</div><div class="val" contenteditable="true">15秒（ループ再生）</div></div>
+    <div class="item"><div class="label">音声</div><div class="val" contenteditable="true">なし（無音・自動再生）</div></div>
+    <div class="item"><div class="label">再生方法</div><div class="val" contenteditable="true">ページ読み込み時に自動再生／常時ループ／背景として画面を覆うように表示</div></div>
+  </div>
+  <p class="lead" contenteditable="true" style="margin-top:16px;">
+    ウェブサイトのトップページを開いた瞬間に流れる、常時再生の背景動画です。宿泊のメイン目的である「夢のつり橋」を起点に、寸又峡エリアの見どころ（アプト式鉄道・奥大井湖上駅）を経て、翠紅苑の建物へとたどり着く流れになっています。最後の2.5秒は静止画に近い状態でキャッチコピーを表示し、その後また冒頭へループします。
+  </p>
+
+  <h2 class="section-title">カット割り（絵コンテ）</h2>
+  <table class="shotlist">
+    <thead><tr><th>タイム</th><th>シーン</th><th>内容</th><th>カメラワーク・演出</th></tr></thead>
+    <tbody>
+      <tr class="emphasis">
+        <td class="time">0.0〜3.0秒</td>
+        <td class="scene">① 夢のつり橋<span class="tag point">最重要</span></td>
+        <td contenteditable="true">つり橋を渡るPOV視点。眼下にエメラルドグリーンの湖面。</td>
+        <td contenteditable="true">開始0.5秒ほどは動きを抑えて静止気味に。そこから静かに前進を始める。5カット中もっとも長い尺を確保。</td>
+      </tr>
+      <tr>
+        <td class="time">3.0〜5.0秒</td>
+        <td class="scene">② アプト式鉄道</td>
+        <td contenteditable="true">アプト式鉄道の車窓からの風景。</td>
+        <td contenteditable="true">つり橋の景色から、寸又峡エリア全体へ視点を広げるつなぎのカット。</td>
+      </tr>
+      <tr class="emphasis">
+        <td class="time">5.0〜7.5秒</td>
+        <td class="scene">③ 奥大井湖上駅<span class="tag">見どころ</span></td>
+        <td contenteditable="true">接岨湖に浮かぶ奥大井湖上駅の全景。</td>
+        <td contenteditable="true">つり橋に次ぐインパクトのあるスポットのため、やや長めの尺を確保。</td>
+      </tr>
+      <tr>
+        <td class="time">7.5〜9.5秒</td>
+        <td class="scene">④ 温泉場全景→翠紅苑</td>
+        <td contenteditable="true">寸又峡温泉場の全景から、翠紅苑の建物へズームしていく。</td>
+        <td contenteditable="true">「エリアの魅力」から「宿」へ視点を橋渡しするカット。</td>
+      </tr>
+      <tr>
+        <td class="time">9.5〜12.5秒</td>
+        <td class="scene">⑤ 翠紅苑・外観</td>
+        <td contenteditable="true">翠紅苑の外観（夕景・灯りが灯り始める時間帯が望ましい）。可能であれば湯けむりを一瞬差し込む。</td>
+        <td contenteditable="true">静かなズームアウトで着地。次の静止カットへ動きを落ち着かせていく。</td>
+      </tr>
+      <tr class="static-row">
+        <td class="time">12.5〜15.0秒</td>
+        <td class="scene">⑥ 静止＋コピー表示<span class="tag point">要相談</span></td>
+        <td contenteditable="true">⑤の外観カットのまま、ほぼ静止した状態で保持。</td>
+        <td contenteditable="true">静止に入ってから0.3〜0.5秒後に、キャッチコピー1行を薄くフェードイン（文言は別途ご連絡）。</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="loop-note">↻ 15.0秒の時点で①の冒頭へクロスフェード（0.4〜0.5秒）してループ</div>
+
+  <h2 class="section-title">演出面でのお願い</h2>
+  <ul class="notes">
+    <li contenteditable="true">全体を通して、動きは「静かに・ゆっくり」を基調にしてください。手持ち風の激しい揺れや素早いパン・ズームは避け、旅館らしい落ち着いたトーンを優先します。</li>
+    <li contenteditable="true">つり橋カットは、最初の0.5秒だけ動きを抑えることで、絶景の構図をしっかり見せてから動き出す演出にしてください。</li>
+    <li contenteditable="true">⑤→⑥（外観の動き→静止）の切り替えは唐突にならないよう、動きを徐々に落ち着かせながら静止に入るようにしてください。</li>
+    <li contenteditable="true">ループの継ぎ目（15.0秒→0.0秒）は、色調・明るさをできるだけ揃えたうえで、0.4〜0.5秒のクロスフェードで違和感なくつなげてください。</li>
+    <li contenteditable="true">素材は撮影済みです。上記のカット割りに合わせて、素材の中から最適なカットの選定・トリミングをお願いします。</li>
+    <li contenteditable="true">③アプト式鉄道のカットは、②ストーリー動画で使用するカットとは別の素材・別アングルを使用してください（同じ絵の繰り返しを避けるため）。</li>
+  </ul>
+
+  <h2 class="section-title">サイズ・納品仕様</h2>
+  <p class="lead" contenteditable="true">
+    背景として画面いっぱいに敷く動画のため、デスクトップとスマホで画面の縦横比が異なります。同じ素材をそのまま両方に使うとスマホでは左右が大きく切れるため、下記2サイズでの書き出しをお願いします。コストを抑えるため、撮影・編集は1本のマスター素材で行い、被写体とコピー・ロゴの位置を中央のセーフエリア内に収めたうえで、書き出し時に2サイズにトリミングしていただく形を想定しています。
+  </p>
+  <div class="size-grid">
+    <div class="size-card">
+      <div class="device">デスクトップブラウザ用</div>
+      <div class="px" contenteditable="true">1920×1080px</div>
+      <div class="ratio">16:9</div>
+    </div>
+    <div class="size-card">
+      <div class="device">スマホブラウザ用</div>
+      <div class="px" contenteditable="true">1080×1440px</div>
+      <div class="ratio">3:4</div>
+    </div>
+  </div>
+  <div class="delivery-box" style="margin-top:16px;">
+    <dt>セーフエリア</dt>
+    <dd contenteditable="true">主要な被写体・コピー・ロゴは、画面中央の4:5（1080×1350px相当）の範囲内に収めてください。中央クロップで2サイズとも破綻しないようにするためです。</dd>
+    <dt>形式</dt>
+    <dd contenteditable="true">MP4（H.264）を基本とし、必要に応じてWebM等の軽量版もご相談させてください</dd>
+    <dt>音声</dt>
+    <dd contenteditable="true">なし（ミュート前提）</dd>
+    <dt>ファイルサイズ</dt>
+    <dd contenteditable="true">ウェブ表示速度への配慮のため、可能な限り軽量化をお願いします（目安は別途ご相談）</dd>
+  </div>
+
+  <h2 class="section-title" style="border-left-color:#8a847a;">参考：実装側（コーディング会社）への依頼事項</h2>
+  <p class="lead" contenteditable="true" style="border-color:#c9c2b3;background:#F1EFE8;">
+    以下は動画制作会社様への依頼事項ではなく、ウェブサイト実装を担当するコーディング会社への依頼内容です。ご参考までに記載しています。
+  </p>
+  <div class="delivery-box" style="background:#F1EFE8;">
+    <dt>「物語を見る」ボタンの設置位置</dt>
+    <dd contenteditable="true">ヒーロー動画の右下（画面下部中央のスライド位置インジケーターと重ならない位置）</dd>
+    <dt>表示タイミング</dt>
+    <dd contenteditable="true">動画再生開始から1〜2秒後にフェードイン。以降は15秒間（ループ中）常時表示し続ける（ループのたびに同じタイミングで再フェードイン）</dd>
+    <dt>デザイントーン</dt>
+    <dd contenteditable="true">白抜き文字＋半透明の黒背景のピル型ボタン（例：「▶ 物語を見る」）。予約ボタン等のメインCTAと競合しないよう、目立たせすぎない控えめな見た目にする</dd>
+    <dt>タップ領域・配置の注意</dt>
+    <dd contenteditable="true">タップ領域は最低44×44pxを確保する。スマホでは画面下端のホームインジケーターと重ならないよう、下端からの余白（セーフエリア）を空ける</dd>
+    <dt>クリック時の挙動</dt>
+    <dd contenteditable="true">②ストーリー動画（40秒）を自作オーバーレイで再生する。詳細は「②ストーリー動画 制作仕様書」を参照</dd>
+  </div>
+
+  <footer class="doc-footer">寸又峡温泉 翠紅苑 ウェブサイトリニューアルプロジェクト</footer>
+
+</div>
+</body>
+</html>
